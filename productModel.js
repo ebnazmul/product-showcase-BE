@@ -7,6 +7,7 @@ const productSchema = new mongoose.Schema({
         default: "https://source.unsplash.com/random/200x200?sig="
     },
     description: String,
+    brandName: String,
     category: String,
     createdAt: String,
     ratings: Number,
