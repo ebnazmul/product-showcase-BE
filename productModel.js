@@ -2,10 +2,7 @@ const mongoose = require("mongoose");
 
 const productSchema = new mongoose.Schema({
     productName: String,
-    productImg: {
-        type: String,
-        default: "https://source.unsplash.com/random/200x200?sig="
-    },
+    productImage: String,
     description: String,
     brandName: String,
     category: String,
