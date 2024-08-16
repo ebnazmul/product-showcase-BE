@@ -6,11 +6,13 @@ const port = process.env.PORT || 3000;
 const mongoose = require('mongoose')
 const Product = require('./productModel')
 
+// db
+mongoose.connect(process.env.URI, {useNewUrlParser: true, useUnifiedTopology: true}).then(() => console.log("Connected to DB!")) 
+
 // middlewires
 app.use(cors())
 app.use(express.json())
-// db
-mongoose.connect(process.env.URI).then(() => console.log("Connected to DB!"))
+
 
 
 // const newData = [
