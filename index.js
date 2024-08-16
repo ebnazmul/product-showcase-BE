@@ -9,6 +9,8 @@ const Product = require('./productModel')
 // middlewires
 app.use(cors())
 app.use(express.json())
+// db
+mongoose.connect(process.env.URI).then(() => console.log("Connected to DB!"))
 
 
 const data = [
@@ -185,14 +187,13 @@ const data = [
 ]
 
 
-mongoose.connect(process.env.URI).then(() => console.log("Connected to DB!"))
-
 
 app.get('/', async (req, res) => {
     await Product.insertMany(data).catch(err => console.log(err))
     // const result = await Product.distinct("brandName")
     res.send("|")
 })
+
 
 app.get('/products/filterOptions', async (req, res) => {
     try {
@@ -211,7 +212,6 @@ app.get('/products/filterOptions', async (req, res) => {
 app.get('/products', async (req, res) => {
     try {
         const { search, page = 1, category, sort, brand, priceRange } = req.query;
-
         let query = Product.find({})
 
         if (search) {
